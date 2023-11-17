@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+		<title>your results</title>
+
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #fff;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+            }
+    
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+    
+            h1 {
+                color: #333;
+            }
+    
+            div {
+                margin-bottom: 30px;
+            }
+    
+            h2 {
+                color: #0066cc;
+            }
+    
+            table {
+                width: 100%;
+                max-width: 800px;
+                border-collapse: collapse;
+                margin-top: 15px;
+            }
+    
+            table, th, td {
+                border: 1px solid #ddd;
+            }
+    
+            td {
+                padding: 10px;
+                text-align: left;
+            }
+    
+            .progress-container {
+                position: relative;
+                width:100px;
+                margin: 20px auto;
+
+            }
+            
+            .progress-value {
+                position: absolute;
+                top: 0;
+                left: 200%;
+                transform: translateX(15px);
+                color: #333; /* Adjust the color as needed */
+            }
+            
+            progress {
+                width: 200%;
+                height: 20px;
+                margin-top: 5px;
+            }
+           
+            .label {
+                max-width: 10px;
+                margin-right: 35px;
+            }
+
+            .skincare {
+                display: flex;
+  justify-content: center;
+            }
+           
+        </style>
+	</head>
+	<body>
+        <div  class="container">
+            
+        <img src="{% static image_path %}" alt="Your Image">
+        {% comment %} Gender {% endcomment %}
+        <h1>Gender:</h1>
+		<div>
+			{% if results %} 
+                {% for key, value in results.items %} 
+                    {% if key == "genres" %}
+			            <h2><strong>You are a {{value}}</strong></h2>
+			        {% endif %} 
+                {% endfor %} 
+            {% endif %}
+		</div>
+
+        {% comment %} Skin Care {% endcomment %}
+        <h1>Skin Results:</h1>
+		<div class="skincare">
+			{% if results %} 
+                {% for key, value in results.items %} 
+                    {% if key == "skinres" %}
+                    <table>
+			            {% for each_dict in value %}
+                            <tr>
+                                    {% for Skey, Svalue in each_dict.items %}
+                                        {% if Skey == "label" %}
+                                        <td class="label">
+                                            <strong>{{Svalue}}</strong>
+                                        </td>
+                                        {% elif Skey == "score" %}
+                                        <td>
+                                            <div class="progress-container">
+                                                <progress value="{{ Svalue }}" max="1"></progress>
+                                                <span class="progress-value">{{ Svalue | floatformat:2 }}</span>
+                                            </div>
+                                            {% comment %} <progress value={{Svalue}} max="1"></progress> {% endcomment %}
+                                        </td>
+                                        {% comment %} ADD SCOREBAR {% endcomment %}
+                                        {% endif %}
+                                    {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+			        {% endif %} 
+                {% endfor %} 
+            {% endif %}
+		</div>
+        </div>
+	</body>
+</html>
