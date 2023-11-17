@@ -49,6 +49,7 @@ Pillow==10.0.1
 platformdirs==3.10.0
 protobuf==4.24.4
 psycopg2==2.9.7
+psycopg2-binary==2.9.9
 pyarrow==13.0.0
 pydantic==2.4.2
 pydantic_core==2.10.1
