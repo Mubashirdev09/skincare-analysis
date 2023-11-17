@@ -84,8 +84,12 @@ os.makedirs(image_dir, exist_ok=True)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '53Df1-d1bG3*2Dg-CddeCF-ec4G42GE1',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '48316',
     }
 }
 
