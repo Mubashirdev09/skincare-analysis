@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Imagemodel
-from .api_utils import query
+from .api_utils import query, generate_summary
 def index(request):
     return render(request,"../templates/index.html")
 
@@ -26,6 +26,10 @@ def results(request):
     query_data = request.session.get("query_data", None)
     image_path = request.session.get("image", None)
     print(image_path)
-    return render(request, "results.html", {'results': query_data,'image_path':image_path})
-    
+
+    # Generate a summary using your language model
+    summary_data = generate_summary(query_data)
+    print(summary_data)
+
+    return render(request, "results.html", {'results': query_data, 'image_path': image_path, 'summary_data': summary_data})
 

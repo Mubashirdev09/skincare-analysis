@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-&+c%_@r7uply&cx_4fa4(gljs=v31q=pd(#)eiu36mq5_t6xg%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
+
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -84,12 +85,8 @@ os.makedirs(image_dir, exist_ok=True)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '53Df1-d1bG3*2Dg-CddeCF-ec4G42GE1',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '48316',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -132,7 +129,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'images'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
