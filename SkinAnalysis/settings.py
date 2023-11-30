@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-&+c%_@r7uply&cx_4fa4(gljs=v31q=pd(#)eiu36mq5_t6xg%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ['https://skincareanalysis.onrender.com']
 
 # Application definition
 
