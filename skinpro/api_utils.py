@@ -33,7 +33,7 @@ def query(file):
     else:
         gen_res = "woman"
         
-    time.sleep(5)
+    time.sleep(10)
     return {'skinres': skin_res_data,'genres': gen_res}
 
 
