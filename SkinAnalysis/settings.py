@@ -20,6 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+
+import os
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&+c%_@r7uply&cx_4fa4(gljs=v31q=pd(#)eiu36mq5_t6xg%'
 
@@ -83,6 +86,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 image_dir = os.path.join(settings.MEDIA_ROOT, 'images')
 os.makedirs(image_dir, exist_ok=True)
 
+import dj_database_url
+import os
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -90,6 +97,9 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+	"default": dj_database_url.parse("postgres://test_db_34xp_user:QKI79l3zBjEUies3mTLENMVuLTs17EFR@dpg-clk8vbl8td7s73ddeps0-a.oregon-postgres.render.com/test_db_34xp")
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
