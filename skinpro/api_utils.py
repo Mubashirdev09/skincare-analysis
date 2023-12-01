@@ -19,7 +19,8 @@ def query(file):
         data = f.read()
     skinres = requests.post(API_SKINCARE_URL, headers=headers, data=data)
     genres = requests.post(API_GENDER_URL, headers=headers, data=data)
-
+    
+    time.sleep(7)
     # preprosessing data
     gen_res_data = genres.json()
 
@@ -36,7 +37,7 @@ def query(file):
     else:
         gen_res = "woman"
 
-    time.sleep(7)
+    # time.sleep(7)
     return {"skinres": skin_res_data, "genres": gen_res}
 
 def generate_summary(results):
